@@ -1,0 +1,38 @@
+* { box-sizing: border-box; }
+:root { font-family: "Segoe UI", Arial, sans-serif; color: #263c32; background: #f4f7f5; }
+body { margin: 0; }
+main { max-width: 1080px; margin: auto; padding: 0 28px; }
+header { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; border-bottom: 1px solid #dfe6e1; }
+header span { color: #728177; font-size: 13px; }
+.logo { color: #245c44; font-size: 23px; font-weight: 700; text-decoration: none; }
+.intro { padding: 48px 0 28px; }
+.eyebrow { font-size: 10px; letter-spacing: 2px; font-weight: 700; color: #5e7a69; }
+h1 { margin: 12px 0; font-size: clamp(30px, 5vw, 42px); font-weight: 600; letter-spacing: -1.4px; }
+.intro > p:last-child, .muted { color: #748379; font-size: 13px; }
+.accounts { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 18px; }
+.card { padding: 28px; border: 1px solid #e0e7e2; border-radius: 16px; background: white; }
+.card h2 { margin: 16px 0 6px; font-size: 15px; font-weight: 600; }
+.primary { background: #245c44; border-color: #245c44; color: white; display: flex; flex-direction: column; justify-content: center; }
+.primary > p, .primary small { color: #c0d7c8; }
+.primary h2 { margin: 10px 0 28px; font-size: clamp(28px, 3.5vw, 38px); }
+.icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #eef5ee; color: #437452; }
+.muted { margin: 8px 0 18px; }
+.balance { font-size: 27px; font-weight: 600; margin: 0 0 16px; }
+small { font-size: 11px; color: #738379; }
+.badge { padding: 4px 8px; background: #eef5e9; color: #56784a; border-radius: 5px; }
+.operations { display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; background: white; border: 1px solid #e0e7e2; border-radius: 16px; padding: 32px; margin-top: 24px; }
+.operations h2 { font-size: 22px; font-weight: 600; margin: 12px 0; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+label { display: flex; flex-direction: column; gap: 9px; font-size: 12px; font-weight: 600; }
+input, select, button { font: inherit; }
+input, select { width: 100%; min-width: 0; padding: 12px; border: 1px solid #dce5df; border-radius: 8px; background: #fafcfb; color: #33493d; font-size: 14px; }
+:focus-visible { outline: 3px solid #9cc6ad; outline-offset: 3px; }
+.actions { display: flex; gap: 10px; margin-top: 18px; }
+button { border: 1px solid #245c44; border-radius: 8px; padding: 12px 24px; background: #245c44; color: white; font-size: 13px; font-weight: 600; cursor: pointer; }
+button:hover { background: #194633; }
+.secondary { background: white; color: #245c44; border-color: #dce5df; }
+.secondary:hover { background: #edf4ef; }
+#message { min-height: 28px; margin: 14px 0 0; font-size: 11px; color: #728177; line-height: 1.5; }
+footer { padding: 28px 0; font-size: 11px; color: #839188; }
+@media (max-width: 760px) { .accounts { grid-template-columns: 1fr 1fr; } .primary { grid-column: 1 / -1; } .operations { grid-template-columns: 1fr; gap: 16px; } }
+@media (max-width: 460px) { main { padding: 0 18px; } header span { font-size: 11px; } .accounts, .fields { grid-template-columns: 1fr; } .card, .operations { padding: 24px; } .intro { padding-top: 32px; } }
