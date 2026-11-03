@@ -1,6 +1,6 @@
 'use strict';
 
-'use strict';
+// 1.1 Account Class
 
 class Account {
   #balance;
@@ -37,6 +37,8 @@ class Account {
   }
 }
 
+// 1.2 Savings Account
+
 class SavingsAccount extends Account {
   constructor(accountNumber, balance, interestRate) {
     super(accountNumber, balance);
@@ -67,12 +69,15 @@ class CheckingAccount extends Account {
     this.withdraw(this.monthlyFee);
   }
 
+  // 1.3 Polymorphism
   transfer(toAccount, amount) {
     if (amount > 1 && this.withdraw(amount)) {
       toAccount.deposit(amount - 1);
     }
   }
 }
+
+// 1.4 Bank Class
 
 class Bank {
   constructor() {
@@ -106,25 +111,27 @@ class Bank {
   }
 }
 
+// Testing
+
 const acc = new Account('123', 1000);
 
 acc.deposit(500);
 acc.withdraw(200);
 
-console.log(acc.getBalance()); // 1300
+console.log(acc.getBalance());
 
 const savings = new SavingsAccount('456', 5000, 0.03);
 const checking = new CheckingAccount('789', 1000, 10);
 
 savings.addInterest();
 
-console.log(savings.getBalance()); // 5150
+console.log(savings.getBalance());
 
 savings.transfer(checking, 1000);
 checking.transfer(savings, 100);
 
-console.log(savings.getBalance()); // 4249
-console.log(checking.getBalance()); // 1880
+console.log(savings.getBalance());
+console.log(checking.getBalance());
 
 const bank = new Bank();
 
@@ -133,38 +140,4 @@ bank.addAccount(checking);
 
 bank.processMonthly();
 
-console.log(bank.getTotalBalance()); // 6246.47
-
-const money = new Intl.NumberFormat('ka-GE', { style: 'currency', currency: 'GEL' });
-
-function renderBalances() {
-  document.getElementById('total-balance').textContent = money.format(bank.getTotalBalance());
-  document.getElementById('savings-balance').textContent = money.format(savings.getBalance());
-  document.getElementById('checking-balance').textContent = money.format(checking.getBalance());
-}
-
-document.getElementById('operation-form').addEventListener('submit', (event) => {
-  event.preventDefault();
-  const input = document.getElementById('amount');
-  const amount = Number(input.value);
-  const account = document.getElementById('account').value === 'savings' ? savings : checking;
-  const message = document.getElementById('message');
-  if (!Number.isFinite(amount) || amount <= 0) {
-    message.textContent = 'შეიყვანეთ ნულზე მეტი თანხა.';
-    return;
-  }
-  if (event.submitter?.value === 'withdraw') {
-    if (!account.withdraw(amount)) {
-      message.textContent = 'ანგარიშზე საკმარისი თანხა არ არის.';
-      return;
-    }
-    message.textContent = `გატანილია ${money.format(amount)}.`;
-  } else {
-    account.deposit(amount);
-    message.textContent = `ანგარიში შეივსო ${money.format(amount)}-ით.`;
-  }
-  input.value = '';
-  renderBalances();
-});
-
-renderBalances();
+console.log(bank.getTotalBalance());
